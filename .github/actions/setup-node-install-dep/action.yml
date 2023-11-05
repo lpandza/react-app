@@ -1,0 +1,21 @@
+name: 'Setup Node and Install Dependencies'
+description: 'Set up Node and install dependencies'
+inputs:
+  node-version:
+    description: 'Node version to use'
+    required: true
+    default: '20.7.0'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: npm
+
+    - name: 📦 Install Dependencies
+      run: npm install
+      shell: bash
