@@ -1,0 +1,33 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Node and install dependencies
+      uses: ./.github/actions/setup-node-install-dep
+      with:
+        node-version: 20.7.0
+  
+    - name: Lint
+      run: npm run lint 
+      
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Node and install dependencies
+      uses: ./.github/actions/setup-node-install-dep
+      with:
+        node-version: 20.7.0
+
+    - name: Build
+      run: npm run build
