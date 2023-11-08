@@ -1,4 +1,4 @@
 export const apiEndpoints = {
   BASE_URL: 'https://api.potterdb.com',
-  getCharacters: () => `/v1/characters`,
+  GET_CHARACTERS: `/v1/characters`,
 };
