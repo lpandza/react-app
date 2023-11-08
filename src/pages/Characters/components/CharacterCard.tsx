@@ -20,7 +20,7 @@ export function CharacterCard({ character }: CharacterCardProps) {
         <img
           src={character.attributes.image || defaultAvatar}
           alt={character.attributes.name}
-          className="border-gold-color h-32 w-32 rounded-full border-4 object-cover"
+          className="h-32 w-32 rounded-full border-4 border-gold-color object-cover"
         />
       </div>
       <div className="p-4 text-center">
