@@ -3,4 +3,5 @@ export const PathConstants = {
   HOMEPAGE: '/home',
   CHARACTERS: '/characters',
   ABOUT: '/about',
+  CHARACTERS_DETAILS: '/characters/:id',
 };

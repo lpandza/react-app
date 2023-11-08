@@ -1,4 +1,4 @@
-type CharacterAttributes = {
+export type CharacterAttributes = {
   alias_names: string[];
   animagus: string;
   born: string;
@@ -9,9 +9,10 @@ type CharacterAttributes = {
   name: string;
   patronus: string;
   slug: string;
-  wand: string;
+  wands: string[];
   blood_status: string;
   titles: string[];
+  species: string;
 };
 
 export type Character = {

@@ -1,18 +1,26 @@
 import defaultAvatar from '../../../assets/default_avatar.svg';
 import { Character } from '../../../types/Character.ts';
+import { useNavigate } from 'react-router-dom';
+import { getCharacterDetails } from '../../../navigation/util/pathUtils.ts';
 
 type CharacterCardProps = {
   character: Character;
 };
 
 export function CharacterCard({ character }: CharacterCardProps) {
+  const navigate = useNavigate();
+  const handleCardClick = (id: string) => navigate(getCharacterDetails(id));
+
   return (
-    <div className="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
+    <div
+      onClick={() => handleCardClick(character.id)}
+      className="transform cursor-pointer overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-2xl"
+    >
       <div className="flex justify-center p-6">
         <img
           src={character.attributes.image || defaultAvatar}
           alt={character.attributes.name}
-          className="h-32 w-32 rounded-full border-4 border-gold-color object-cover"
+          className="border-gold-color h-32 w-32 rounded-full border-4 object-cover"
         />
       </div>
       <div className="p-4 text-center">
