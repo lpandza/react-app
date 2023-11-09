@@ -4,6 +4,7 @@ import { PathConstants } from './PathConstants.ts';
 import { Characters } from '../../pages/Characters/Characters.tsx';
 import { CharacterDetails } from '../../pages/CharacterDetails/CharacterDetails.tsx';
 import { About } from '../../pages/About/About.tsx';
+import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage.tsx';
 
 export const routes: RouteType[] = [
   {
@@ -25,5 +26,10 @@ export const routes: RouteType[] = [
     path: PathConstants.ABOUT,
     element: <About />,
     title: 'characters',
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+    title: '404 Not Found',
   },
 ];
