@@ -24,7 +24,7 @@ You will need the following tools installed on your system:
 ### Installing
 
 1. Clone the repository
-   "git clone https://github.com/your-username/potter-app.git"
+   "git clone https://github.com/lpandza/potter-app.git"
 
 2. Navigate to the project directory
    "cd potter-app"
