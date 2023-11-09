@@ -1,25 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Character } from '../../../types/Character.ts';
-import { axios } from '../../../services/api/potterdb/axios.ts';
-import { apiEndpoints } from '../../../services/api/potterdb/apiEndpoints.ts';
 import { CharacterCard } from './CharacterCard.tsx';
 import { SkeletonCard } from './SkeletonCard.tsx';
 import { ErrorMessage } from '../../../components/ErrorMessage.tsx';
+import { Pagination } from '../../../components/Pagination/Pagination.tsx';
+import { useCharactersData } from '../../../hooks/useCharactersData.ts';
+import { useCallback } from 'react';
 
 export function CharacterList() {
-  const [characters, setCharacters] = useState<Character[]>();
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { characters, isLoading, error, links, getCharacters } = useCharactersData();
 
-  useEffect(() => {
-    axios
-      .get(apiEndpoints.GET_CHARACTERS)
-      .then((res) => {
-        setCharacters(res.data.data);
-      })
-      .catch((err) => setError(err.response.data.errors[0].detail))
-      .finally(() => setIsLoading(false));
-  }, []);
+  const handlePageChange = useCallback(
+    (newUrl: string) => {
+      getCharacters(newUrl);
+    },
+    [getCharacters],
+  );
 
   function renderCharacterCards() {
     if (isLoading) {
@@ -38,6 +32,7 @@ export function CharacterList() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {renderCharacterCards()}
       </div>
+      <Pagination prev={links?.prev} next={links?.next} current={links?.current} onPageChange={handlePageChange} />
     </div>
   );
 }
