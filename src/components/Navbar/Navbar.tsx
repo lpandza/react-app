@@ -12,9 +12,9 @@ export function Navbar() {
         <Link to={PathConstants.CHARACTERS} className="navbar-item hover:text-gray-300">
           Characters
         </Link>
-        <a href="/about" className="navbar-item hover:text-gray-300">
+        <Link to={PathConstants.ABOUT} className="navbar-item hover:text-gray-300">
           About
-        </a>
+        </Link>
       </div>
     </nav>
   );

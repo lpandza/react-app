@@ -3,6 +3,7 @@ import { Homepage } from '../../pages/Homepage/Hompage.tsx';
 import { PathConstants } from './PathConstants.ts';
 import { Characters } from '../../pages/Characters/Characters.tsx';
 import { CharacterDetails } from '../../pages/CharacterDetails/CharacterDetails.tsx';
+import { About } from '../../pages/About/About.tsx';
 
 export const routes: RouteType[] = [
   {
@@ -18,6 +19,11 @@ export const routes: RouteType[] = [
   {
     path: PathConstants.CHARACTERS_DETAILS,
     element: <CharacterDetails />,
+    title: 'characters',
+  },
+  {
+    path: PathConstants.ABOUT,
+    element: <About />,
     title: 'characters',
   },
 ];
