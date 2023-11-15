@@ -2,11 +2,16 @@ import { CharacterCard } from './CharacterCard.tsx';
 import { SkeletonCard } from './SkeletonCard.tsx';
 import { ErrorMessage } from '../../../components/ErrorMessage.tsx';
 import { Pagination } from '../../../components/Pagination/Pagination.tsx';
-import { useCharactersData } from '../../../hooks/useCharactersData.ts';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useCharactersContext } from '../../../contexts/CharactersContext.tsx';
+import { apiEndpoints } from '../../../services/api/potterdb/apiEndpoints.ts';
 
 export function CharacterList() {
-  const { characters, isLoading, error, links, getCharacters } = useCharactersData();
+  const { characters, isLoading, error, links, getCharacters } = useCharactersContext();
+
+  useEffect(() => {
+    getCharacters(apiEndpoints.GET_CHARACTERS);
+  }, [getCharacters]);
 
   const handlePageChange = useCallback(
     (newUrl: string) => {
